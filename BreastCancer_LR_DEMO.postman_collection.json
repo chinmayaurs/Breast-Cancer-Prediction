@@ -1,0 +1,374 @@
+{
+	"variables": [],
+	"info": {
+		"name": "BreastCancer_LR_DEMO",
+		"_postman_id": "773accf6-74fe-64fa-3687-ed2782a67ae5",
+		"description": "AKI algorithm related Curl commands",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Token_DEMO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests['Status Code is 200'] = (responseCode.code == 200);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    try",
+							"    {",
+							"        var jsonData = JSON.parse(responseBody);",
+							"        //postman.setEnvironmentVariable(\"accessToken\", jsonData.access_token);",
+							"        postman.setGlobalVariable(\"accessToken\", jsonData.access_token);",
+							"    }",
+							"    catch(e)",
+							"    {",
+							"        console.log(e);",
+							"    }",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "https://hsiplatform.demo.phsi.io/oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic ZHNwY2xpZW50OnNlY3JldA==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "hsiuser4",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "DcZ4drFX",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Async Score - Score.py (No args)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests['Status Code is 200'] = (responseCode.code == 200);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    try",
+							"    {",
+							"        // var jsonData = JSON.parse(responseBody);",
+							"        // postman.setEnvironmentVariable(\"accessToken\", jsonData.access_token);",
+							"        postman.setGlobalVariable(\"taskId\", responseBody);",
+							"    }",
+							"    catch(e)",
+							"    {",
+							"        console.log(e);",
+							"    }",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "https://hsiplatform.demo.phsi.io/score/scoreasync",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"scriptType\":\"python\",\n\t\"scriptId\":\"4095b15a-d238-4ffa-98b9-d54af8e64043/Deploy/Main/score.py\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Async Score - Score.ipynb (No args)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests['Status Code is 200'] = (responseCode.code == 200);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    try",
+							"    {",
+							"        // var jsonData = JSON.parse(responseBody);",
+							"        // postman.setEnvironmentVariable(\"accessToken\", jsonData.access_token);",
+							"        postman.setGlobalVariable(\"taskId\", responseBody);",
+							"    }",
+							"    catch(e)",
+							"    {",
+							"        console.log(e);",
+							"    }",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "https://hsiplatform.demo.phsi.io/score/scoreasync",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"scriptType\":\"iPython\",\n\t\"scriptId\":\"4095b15a-d238-4ffa-98b9-d54af8e64043/Deploy/Main/score.py.ipynb\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Async Score - Score_IO.py (with Args)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests['Status Code is 200'] = (responseCode.code == 200);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    try",
+							"    {",
+							"        // var jsonData = JSON.parse(responseBody);",
+							"        // postman.setEnvironmentVariable(\"accessToken\", jsonData.access_token);",
+							"        postman.setGlobalVariable(\"taskId\", responseBody);",
+							"    }",
+							"    catch(e)",
+							"    {",
+							"        console.log(e);",
+							"    }",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "https://hsiplatform.demo.phsi.io/score/scoreasync",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"scriptType\":\"python\",\n\t\"scriptId\":\"40f9a5cd-2978-414a-9706-82602d27a8c7/Deploy_BCLR/Main/score_IO.py\",\n\t\"additionalParams\" :\"Q2x1bXAgVGhpY2tuZXNzLFVuaWZvcm1pdHkgb2YgQ2VsbCBTaXplLFVuaWZvcm1pdHkgb2YgQ2VsbCBTaGFwZSxNYXJnaW5hbCBBZGhlc2lvbixTaW5nbGUgRXBpdGhlbGlhbCBDZWxsIFNpemUsQmFyZSBOdWNsZWksQmxhbmQgQ2hyb21hdGluLE5vcm1hbCBOdWNsZW9saSxNaXRvc2VzLENsYXNzDQo1LDEsMSwxLDIsMSwzLDEsMSxCZW5pZ24NCjUsNCw0LDUsNywxMCwzLDIsMSxCZW5pZ24NCjMsMSwxLDEsMiwyLDMsMSwxLEJlbmlnbg0KNiw4LDgsMSwzLDQsMyw3LDEsQmVuaWduDQo0LDEsMSwzLDIsMSwzLDEsMSxCZW5pZ24NCjgsMTAsMTAsOCw3LDEwLDksNywxLE1hbGlnbmFudA0KMSwxLDEsMSwyLDEwLDMsMSwxLEJlbmlnbg0KMiwxLDIsMSwyLDEsMywxLDEsQmVuaWduDQoyLDEsMSwxLDIsMSwxLDEsNSxCZW5pZ24NCjQsMiwxLDEsMiwxLDIsMSwxLEJlbmlnbg0KMSwxLDEsMSwxLDEsMywxLDEsQmVuaWduDQoyLDEsMSwxLDIsMSwyLDEsMSxCZW5pZ24NCjUsMywzLDMsMiwzLDQsNCwxLE1hbGlnbmFudA0KMSwxLDEsMSwyLDMsMywxLDEsQmVuaWduDQo4LDcsNSwxMCw3LDksNSw1LDQsTWFsaWduYW50DQo3LDQsNiw0LDYsMSw0LDMsMSxNYWxpZ25hbnQNCjQsMSwxLDEsMiwxLDIsMSwxLEJlbmlnbg0KNCwxLDEsMSwyLDEsMywxLDEsQmVuaWduDQoxMCw3LDcsNiw0LDEwLDQsMSwyLE1hbGlnbmFudA0KNiwxLDEsMSwyLDEsMywxLDEsQmVuaWduDQo3LDMsMiwxMCw1LDEwLDUsNCw0LE1hbGlnbmFudA0KMTAsNSw1LDMsNiw3LDcsMTAsMSxNYWxpZ25hbnQNCjMsMSwxLDEsMiwxLDIsMSwxLEJlbmlnbg0KOCw0LDUsMSwyLD8sNywzLDEsTWFsaWduYW50DQoxLDEsMSwxLDIsMSwzLDEsMSxCZW5pZ24NCjUsMiwzLDQsMiw3LDMsNiwxLE1hbGlnbmFudA0KMywyLDEsMSwxLDEsMiwxLDEsQmVuaWduDQo1LDEsMSwxLDIsMSwyLDEsMSxCZW5pZ24NCjIsMSwxLDEsMiwxLDIsMSwxLEJlbmlnbg0KMSwxLDMsMSwyLDEsMSwxLDEsQmVuaWduDQozLDEsMSwxLDEsMSwyLDEsMSxCZW5pZ24NCg==\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Async Score - Score_IO.py (with Args 1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests['Status Code is 200'] = (responseCode.code == 200);",
+							"",
+							"if (responseCode.code == 200) {",
+							"    try",
+							"    {",
+							"        // var jsonData = JSON.parse(responseBody);",
+							"        // postman.setEnvironmentVariable(\"accessToken\", jsonData.access_token);",
+							"        postman.setGlobalVariable(\"taskId\", responseBody);",
+							"    }",
+							"    catch(e)",
+							"    {",
+							"        console.log(e);",
+							"    }",
+							"}",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "https://hsiplatform.demo.phsi.io/score/scoreasync",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n  \"scriptType\":\"python\",\n  \"scriptId\":\"4095b15a-d238-4ffa-98b9-d54af8e64043/Deploy/Main/score_IO.py\",\n  \"additionalParams\" :\"Q2x1bXAgVGhpY2tuZXNzLFVuaWZvcm1pdHkgb2YgQ2VsbCBTaXplLFVuaWZvcm1pdHkgb2YgQ2VsbCBTaGFwZSxNYXJnaW5hbCBBZGhlc2lvbixTaW5nbGUgRXBpdGhlbGlhbCBDZWxsIFNpemUsQmFyZSBOdWNsZWksQmxhbmQgQ2hyb21hdGluLE5vcm1hbCBOdWNsZW9saSxNaXRvc2VzDQo1LDIsMyw0LDIsNywzLDYsMQ0KMywyLDEsMSwxLDEsMiwxLDE=\"\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "GetStatus",
+			"request": {
+				"url": {
+					"raw": "https://hsiplatform.demo.phsi.io/score/scoringstatus?taskId={{taskId}}",
+					"protocol": "https",
+					"host": [
+						"hsiplatform",
+						"demo",
+						"phsi",
+						"io"
+					],
+					"path": [
+						"score",
+						"scoringstatus"
+					],
+					"query": [
+						{
+							"key": "taskId",
+							"value": "{{taskId}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"scriptType\":\"python\",\n\t\"scriptId\":\"d7ab0792-42e6-411a-b7c8-cd090a223d8e/DeployExperiment/Main/examplescore.py\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetResult",
+			"request": {
+				"url": {
+					"raw": "https://hsiplatform.demo.phsi.io/score/scoreresult?taskId={{taskId}}",
+					"protocol": "https",
+					"host": [
+						"hsiplatform",
+						"demo",
+						"phsi",
+						"io"
+					],
+					"path": [
+						"score",
+						"scoreresult"
+					],
+					"query": [
+						{
+							"key": "taskId",
+							"value": "{{taskId}}",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"scriptType\":\"python\",\n\t\"scriptId\":\"d7ab0792-42e6-411a-b7c8-cd090a223d8e/DeployExperiment/Main/examplescore.py\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
